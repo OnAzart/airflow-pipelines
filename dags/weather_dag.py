@@ -36,7 +36,7 @@ def transforming_data(city, **context):
     return timestamp, temp, humidity, cloudiness, wind_speed
 
 
-with DAG(dag_id='weather_dag', schedule_interval='0 * * * *', start_date=days_ago(0), catchup=False) as dag:
+with DAG(dag_id='weather_dag', schedule_interval='0 12 * * *', start_date=days_ago(0), catchup=True) as dag:
     create_table = SqliteOperator(task_id='create_table',
                                   sqlite_conn_id='measure_db',
                                   sql='''CREATE TABLE IF NOT EXISTS measures_ext (
