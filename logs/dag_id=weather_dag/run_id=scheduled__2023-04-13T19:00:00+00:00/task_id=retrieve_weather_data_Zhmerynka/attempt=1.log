@@ -1,0 +1,25 @@
+[2023-04-13T20:00:04.655+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.retrieve_weather_data_Zhmerynka scheduled__2023-04-13T19:00:00+00:00 [queued]>
+[2023-04-13T20:00:04.678+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.retrieve_weather_data_Zhmerynka scheduled__2023-04-13T19:00:00+00:00 [queued]>
+[2023-04-13T20:00:04.681+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T20:00:04.682+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-13T20:00:04.694+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T20:00:04.737+0000] {taskinstance.py:1309} INFO - Executing <Task(SimpleHttpOperator): retrieve_weather_data_Zhmerynka> on 2023-04-13 19:00:00+00:00
+[2023-04-13T20:00:04.748+0000] {standard_task_runner.py:55} INFO - Started process 6138 to run task
+[2023-04-13T20:00:04.764+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'retrieve_weather_data_Zhmerynka', 'scheduled__2023-04-13T19:00:00+00:00', '--job-id', '226', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmp6o37hud_']
+[2023-04-13T20:00:04.772+0000] {standard_task_runner.py:83} INFO - Job 226: Subtask retrieve_weather_data_Zhmerynka
+[2023-04-13T20:00:04.922+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.retrieve_weather_data_Zhmerynka scheduled__2023-04-13T19:00:00+00:00 [running]> on host ffea11fb791c
+[2023-04-13T20:00:05.149+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=retrieve_weather_data_Zhmerynka
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-13T19:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-13T19:00:00+00:00
+[2023-04-13T20:00:06.110+0000] {http.py:123} INFO - Calling HTTP method
+[2023-04-13T20:00:06.144+0000] {base.py:73} INFO - Using connection ID 'weather_http_api' for task execution.
+[2023-04-13T20:00:07.373+0000] {http.py:127} INFO - {"coord":{"lon":28.112,"lat":49.037},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}],"base":"stations","main":{"temp":281.24,"feels_like":280.5,"temp_min":281.24,"temp_max":281.24,"pressure":1009,"humidity":89,"sea_level":1009,"grnd_level":971},"visibility":10000,"wind":{"speed":1.61,"deg":17,"gust":2.53},"clouds":{"all":100},"dt":1681415891,"sys":{"country":"UA","sunrise":1681356069,"sunset":1681404888},"timezone":10800,"id":687116,"name":"Zhmerynka","cod":200}
+[2023-04-13T20:00:08.448+0000] {taskinstance.py:1332} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=retrieve_weather_data_Zhmerynka, execution_date=20230413T190000, start_date=20230413T200004, end_date=20230413T200008
+[2023-04-13T20:00:10.972+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-13T20:00:11.502+0000] {taskinstance.py:2596} INFO - 1 downstream tasks scheduled from follow-on schedule check

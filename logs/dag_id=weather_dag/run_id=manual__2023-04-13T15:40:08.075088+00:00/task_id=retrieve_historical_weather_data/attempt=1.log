@@ -1,0 +1,74 @@
+[2023-04-13T15:40:11.274+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.retrieve_historical_weather_data manual__2023-04-13T15:40:08.075088+00:00 [queued]>
+[2023-04-13T15:40:11.288+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.retrieve_historical_weather_data manual__2023-04-13T15:40:08.075088+00:00 [queued]>
+[2023-04-13T15:40:11.290+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T15:40:11.291+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-13T15:40:11.292+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T15:40:11.304+0000] {taskinstance.py:1309} INFO - Executing <Task(SimpleHttpOperator): retrieve_historical_weather_data> on 2023-04-13 15:40:08.075088+00:00
+[2023-04-13T15:40:11.310+0000] {standard_task_runner.py:55} INFO - Started process 4718 to run task
+[2023-04-13T15:40:11.314+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'retrieve_historical_weather_data', 'manual__2023-04-13T15:40:08.075088+00:00', '--job-id', '200', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpw4txixdk']
+[2023-04-13T15:40:11.316+0000] {standard_task_runner.py:83} INFO - Job 200: Subtask retrieve_historical_weather_data
+[2023-04-13T15:40:11.387+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.retrieve_historical_weather_data manual__2023-04-13T15:40:08.075088+00:00 [running]> on host ffea11fb791c
+[2023-04-13T15:40:11.412+0000] {abstractoperator.py:615} ERROR - Exception rendering Jinja template for task 'retrieve_historical_weather_data', field 'data'. Template: {'q': 'Lviv', 'dt': '{{ ds.timestamp() }}', 'appid': '034a764f2b2c1c3fa00cbea1824b4e57'}
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 678, in render_template
+    return {k: self.render_template(v, context, jinja_env, oids) for k, v in value.items()}
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 678, in <dictcomp>
+    return {k: self.render_template(v, context, jinja_env, oids) for k, v in value.items()}
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 665, in render_template
+    return render_template_to_string(template, context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/helpers.py", line 288, in render_template_to_string
+    return render_template(template, cast(MutableMapping[str, Any], context), native=False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/helpers.py", line 283, in render_template
+    return "".join(nodes)
+  File "<template>", line 12, in root
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/sandbox.py", line 391, in call
+    if not __self.is_safe_callable(__obj):
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/sandbox.py", line 275, in is_safe_callable
+    getattr(obj, "unsafe_callable", False) or getattr(obj, "alters_data", False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/runtime.py", line 859, in __getattr__
+    return self._fail_with_undefined_error()
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/runtime.py", line 852, in _fail_with_undefined_error
+    raise self._undefined_exception(self._undefined_message)
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'timestamp'
+[2023-04-13T15:40:11.415+0000] {taskinstance.py:1776} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1383, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1502, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2123, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 678, in render_template
+    return {k: self.render_template(v, context, jinja_env, oids) for k, v in value.items()}
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 678, in <dictcomp>
+    return {k: self.render_template(v, context, jinja_env, oids) for k, v in value.items()}
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 665, in render_template
+    return render_template_to_string(template, context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/helpers.py", line 288, in render_template_to_string
+    return render_template(template, cast(MutableMapping[str, Any], context), native=False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/helpers.py", line 283, in render_template
+    return "".join(nodes)
+  File "<template>", line 12, in root
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/sandbox.py", line 391, in call
+    if not __self.is_safe_callable(__obj):
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/sandbox.py", line 275, in is_safe_callable
+    getattr(obj, "unsafe_callable", False) or getattr(obj, "alters_data", False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/runtime.py", line 859, in __getattr__
+    return self._fail_with_undefined_error()
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/runtime.py", line 852, in _fail_with_undefined_error
+    raise self._undefined_exception(self._undefined_message)
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'timestamp'
+[2023-04-13T15:40:11.423+0000] {taskinstance.py:1332} INFO - Marking task as FAILED. dag_id=weather_dag, task_id=retrieve_historical_weather_data, execution_date=20230413T154008, start_date=20230413T154011, end_date=20230413T154011
+[2023-04-13T15:40:11.431+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 200 for task retrieve_historical_weather_data ('str object' has no attribute 'timestamp'; 4718)
+[2023-04-13T15:40:11.447+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-04-13T15:40:11.462+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check

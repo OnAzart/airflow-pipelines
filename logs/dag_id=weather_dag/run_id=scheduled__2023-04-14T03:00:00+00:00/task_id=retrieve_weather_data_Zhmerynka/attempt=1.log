@@ -1,0 +1,85 @@
+[2023-04-14T05:01:12.905+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.retrieve_weather_data_Zhmerynka scheduled__2023-04-14T03:00:00+00:00 [queued]>
+[2023-04-14T05:01:13.164+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.retrieve_weather_data_Zhmerynka scheduled__2023-04-14T03:00:00+00:00 [queued]>
+[2023-04-14T05:01:13.192+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-14T05:01:13.202+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-14T05:01:13.209+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-14T05:01:13.487+0000] {taskinstance.py:1309} INFO - Executing <Task(SimpleHttpOperator): retrieve_weather_data_Zhmerynka> on 2023-04-14 03:00:00+00:00
+[2023-04-14T05:01:13.505+0000] {standard_task_runner.py:55} INFO - Started process 7569 to run task
+[2023-04-14T05:01:13.546+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'retrieve_weather_data_Zhmerynka', 'scheduled__2023-04-14T03:00:00+00:00', '--job-id', '458', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpv5nbgh51']
+[2023-04-14T05:01:13.554+0000] {standard_task_runner.py:83} INFO - Job 458: Subtask retrieve_weather_data_Zhmerynka
+[2023-04-14T05:01:13.942+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.retrieve_weather_data_Zhmerynka scheduled__2023-04-14T03:00:00+00:00 [running]> on host ffea11fb791c
+[2023-04-14T05:01:14.693+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=retrieve_weather_data_Zhmerynka
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-14T03:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-14T03:00:00+00:00
+[2023-04-14T05:01:14.722+0000] {http.py:123} INFO - Calling HTTP method
+[2023-04-14T05:01:15.767+0000] {base.py:73} INFO - Using connection ID 'weather_http_api' for task execution.
+[2023-04-14T05:01:18.832+0000] {http.py:215} WARNING - ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')) Tenacity will retry to execute the operation
+[2023-04-14T05:01:25.992+0000] {taskinstance.py:1776} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 288, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 288, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/operators/http.py", line 125, in execute
+    response = http.run(self.endpoint, self.data, self.headers, self.extra_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 158, in run
+    return self.run_and_check(session, prepped_request, extra_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 216, in run_and_check
+    raise ex
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 208, in run_and_check
+    response = session.send(prepped_request, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 547, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2023-04-14T05:01:26.111+0000] {taskinstance.py:1332} INFO - Marking task as FAILED. dag_id=weather_dag, task_id=retrieve_weather_data_Zhmerynka, execution_date=20230414T030000, start_date=20230414T050112, end_date=20230414T050126
+[2023-04-14T05:01:26.374+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 458 for task retrieve_weather_data_Zhmerynka (('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')); 7569)
+[2023-04-14T05:01:26.528+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-04-14T05:01:26.757+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check

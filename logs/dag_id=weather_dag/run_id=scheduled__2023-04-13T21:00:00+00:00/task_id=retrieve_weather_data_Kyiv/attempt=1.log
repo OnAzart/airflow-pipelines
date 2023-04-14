@@ -1,0 +1,25 @@
+[2023-04-13T22:39:25.250+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.retrieve_weather_data_Kyiv scheduled__2023-04-13T21:00:00+00:00 [queued]>
+[2023-04-13T22:39:25.271+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.retrieve_weather_data_Kyiv scheduled__2023-04-13T21:00:00+00:00 [queued]>
+[2023-04-13T22:39:25.275+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T22:39:25.277+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-13T22:39:25.280+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T22:39:25.322+0000] {taskinstance.py:1309} INFO - Executing <Task(SimpleHttpOperator): retrieve_weather_data_Kyiv> on 2023-04-13 21:00:00+00:00
+[2023-04-13T22:39:25.344+0000] {standard_task_runner.py:55} INFO - Started process 7365 to run task
+[2023-04-13T22:39:25.355+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'retrieve_weather_data_Kyiv', 'scheduled__2023-04-13T21:00:00+00:00', '--job-id', '384', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpymho_ymh']
+[2023-04-13T22:39:25.358+0000] {standard_task_runner.py:83} INFO - Job 384: Subtask retrieve_weather_data_Kyiv
+[2023-04-13T22:39:25.607+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.retrieve_weather_data_Kyiv scheduled__2023-04-13T21:00:00+00:00 [running]> on host ffea11fb791c
+[2023-04-13T22:39:25.834+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=retrieve_weather_data_Kyiv
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-13T21:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-13T21:00:00+00:00
+[2023-04-13T22:39:25.838+0000] {http.py:123} INFO - Calling HTTP method
+[2023-04-13T22:39:25.854+0000] {base.py:73} INFO - Using connection ID 'weather_http_api' for task execution.
+[2023-04-13T22:39:29.632+0000] {http.py:127} INFO - {"coord":{"lon":30.5167,"lat":50.4333},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}],"base":"stations","main":{"temp":282.96,"feels_like":282.96,"temp_min":281.85,"temp_max":282.99,"pressure":995,"humidity":83},"visibility":10000,"wind":{"speed":0.89,"deg":12,"gust":1.79},"clouds":{"all":100},"dt":1681425891,"sys":{"type":2,"id":2003742,"country":"UA","sunrise":1681441629,"sunset":1681490944},"timezone":10800,"id":703448,"name":"Kyiv","cod":200}
+[2023-04-13T22:39:29.718+0000] {taskinstance.py:1332} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=retrieve_weather_data_Kyiv, execution_date=20230413T210000, start_date=20230413T223925, end_date=20230413T223929
+[2023-04-13T22:39:29.767+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-13T22:39:29.814+0000] {taskinstance.py:2596} INFO - 1 downstream tasks scheduled from follow-on schedule check

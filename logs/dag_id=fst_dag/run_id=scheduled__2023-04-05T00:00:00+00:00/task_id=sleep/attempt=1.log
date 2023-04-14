@@ -1,0 +1,27 @@
+[2023-04-06T14:44:18.277+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fst_dag.sleep scheduled__2023-04-05T00:00:00+00:00 [queued]>
+[2023-04-06T14:44:18.291+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fst_dag.sleep scheduled__2023-04-05T00:00:00+00:00 [queued]>
+[2023-04-06T14:44:18.292+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-06T14:44:18.293+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-06T14:44:18.294+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-06T14:44:18.307+0000] {taskinstance.py:1309} INFO - Executing <Task(BashOperator): sleep> on 2023-04-05 00:00:00+00:00
+[2023-04-06T14:44:18.315+0000] {standard_task_runner.py:55} INFO - Started process 1271 to run task
+[2023-04-06T14:44:18.321+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'fst_dag', 'sleep', 'scheduled__2023-04-05T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/dummy.py', '--cfg-path', '/tmp/tmp84wnq7ba']
+[2023-04-06T14:44:18.324+0000] {standard_task_runner.py:83} INFO - Job 5: Subtask sleep
+[2023-04-06T14:44:18.408+0000] {task_command.py:389} INFO - Running <TaskInstance: fst_dag.sleep scheduled__2023-04-05T00:00:00+00:00 [running]> on host 0607b07c4f39
+[2023-04-06T14:44:18.483+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=fst_dag
+AIRFLOW_CTX_TASK_ID=sleep
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-05T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-05T00:00:00+00:00
+[2023-04-06T14:44:18.487+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-04-06T14:44:18.489+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'sleep 5']
+[2023-04-06T14:44:18.501+0000] {subprocess.py:86} INFO - Output:
+[2023-04-06T14:44:23.511+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-04-06T14:44:23.539+0000] {taskinstance.py:1332} INFO - Marking task as SUCCESS. dag_id=fst_dag, task_id=sleep, execution_date=20230405T000000, start_date=20230406T144418, end_date=20230406T144423
+[2023-04-06T14:44:23.590+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-06T14:44:23.607+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check

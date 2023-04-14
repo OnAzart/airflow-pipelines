@@ -1,0 +1,52 @@
+[2023-04-13T20:26:49.062+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.inject_data_Lviv manual__2023-04-13T20:26:35.466733+00:00 [queued]>
+[2023-04-13T20:26:49.079+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.inject_data_Lviv manual__2023-04-13T20:26:35.466733+00:00 [queued]>
+[2023-04-13T20:26:49.081+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T20:26:49.082+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-13T20:26:49.084+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T20:26:49.105+0000] {taskinstance.py:1309} INFO - Executing <Task(SqliteOperator): inject_data_Lviv> on 2023-04-13 20:26:35.466733+00:00
+[2023-04-13T20:26:49.115+0000] {standard_task_runner.py:55} INFO - Started process 6901 to run task
+[2023-04-13T20:26:49.120+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'inject_data_Lviv', 'manual__2023-04-13T20:26:35.466733+00:00', '--job-id', '311', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpjnua6z7t']
+[2023-04-13T20:26:49.123+0000] {standard_task_runner.py:83} INFO - Job 311: Subtask inject_data_Lviv
+[2023-04-13T20:26:49.207+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.inject_data_Lviv manual__2023-04-13T20:26:35.466733+00:00 [running]> on host ffea11fb791c
+[2023-04-13T20:26:49.326+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=inject_data_Lviv
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-13T20:26:35.466733+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-13T20:26:35.466733+00:00
+[2023-04-13T20:26:49.329+0000] {sql.py:254} INFO - Executing: 
+                INSERT INTO measures_ext (city, timestamp, temp, humidity, cloudiness, wind_speed) VALUES
+                    (Lviv,
+                    1681417017,
+                    283.26,
+                    70,
+                    "overcast clouds",
+                    0.72);
+            
+[2023-04-13T20:26:49.342+0000] {base.py:73} INFO - Using connection ID 'measure_db' for task execution.
+[2023-04-13T20:26:49.784+0000] {base.py:73} INFO - Using connection ID 'measure_db' for task execution.
+[2023-04-13T20:26:49.795+0000] {sql.py:375} INFO - Running statement: 
+                INSERT INTO measures_ext (city, timestamp, temp, humidity, cloudiness, wind_speed) VALUES
+                    (Lviv,
+                    1681417017,
+                    283.26,
+                    70,
+                    "overcast clouds",
+                    0.72);
+            , parameters: None
+[2023-04-13T20:26:49.813+0000] {taskinstance.py:1776} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 266, in execute
+    **extra_kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/hooks/sql.py", line 349, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/hooks/sql.py", line 380, in _run_command
+    cur.execute(sql_statement)
+sqlite3.OperationalError: no such column: Lviv
+[2023-04-13T20:26:49.830+0000] {taskinstance.py:1332} INFO - Marking task as FAILED. dag_id=weather_dag, task_id=inject_data_Lviv, execution_date=20230413T202635, start_date=20230413T202649, end_date=20230413T202649
+[2023-04-13T20:26:49.861+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 311 for task inject_data_Lviv (no such column: Lviv; 6901)
+[2023-04-13T20:26:49.898+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-04-13T20:26:49.933+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check

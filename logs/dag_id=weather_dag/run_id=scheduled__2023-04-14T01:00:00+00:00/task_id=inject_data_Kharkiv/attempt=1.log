@@ -1,0 +1,43 @@
+[2023-04-14T02:13:58.485+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.inject_data_Kharkiv scheduled__2023-04-14T01:00:00+00:00 [queued]>
+[2023-04-14T02:13:58.540+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.inject_data_Kharkiv scheduled__2023-04-14T01:00:00+00:00 [queued]>
+[2023-04-14T02:13:58.542+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-14T02:13:58.544+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-14T02:13:58.545+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-14T02:13:58.584+0000] {taskinstance.py:1309} INFO - Executing <Task(SqliteOperator): inject_data_Kharkiv> on 2023-04-14 01:00:00+00:00
+[2023-04-14T02:13:58.592+0000] {standard_task_runner.py:55} INFO - Started process 7519 to run task
+[2023-04-14T02:13:58.620+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'inject_data_Kharkiv', 'scheduled__2023-04-14T01:00:00+00:00', '--job-id', '439', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpzbek19eq']
+[2023-04-14T02:13:58.621+0000] {standard_task_runner.py:83} INFO - Job 439: Subtask inject_data_Kharkiv
+[2023-04-14T02:13:58.990+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.inject_data_Kharkiv scheduled__2023-04-14T01:00:00+00:00 [running]> on host ffea11fb791c
+[2023-04-14T02:13:59.399+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=inject_data_Kharkiv
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-14T01:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-14T01:00:00+00:00
+[2023-04-14T02:13:59.401+0000] {sql.py:254} INFO - Executing: 
+                INSERT INTO measures_ext (city, timestamp, temp, humidity, cloudiness, wind_speed) VALUES
+                    ("Kharkiv",
+                    1681439151,
+                    281.22,
+                    89,
+                    "light rain",
+                    4.08);
+            
+[2023-04-14T02:13:59.416+0000] {base.py:73} INFO - Using connection ID 'measure_db' for task execution.
+[2023-04-14T02:14:00.131+0000] {base.py:73} INFO - Using connection ID 'measure_db' for task execution.
+[2023-04-14T02:14:00.140+0000] {sql.py:375} INFO - Running statement: 
+                INSERT INTO measures_ext (city, timestamp, temp, humidity, cloudiness, wind_speed) VALUES
+                    ("Kharkiv",
+                    1681439151,
+                    281.22,
+                    89,
+                    "light rain",
+                    4.08);
+            , parameters: None
+[2023-04-14T02:14:00.162+0000] {sql.py:384} INFO - Rows affected: 1
+[2023-04-14T02:14:00.199+0000] {taskinstance.py:1332} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=inject_data_Kharkiv, execution_date=20230414T010000, start_date=20230414T021358, end_date=20230414T021400
+[2023-04-14T02:14:00.563+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-14T02:14:00.630+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check

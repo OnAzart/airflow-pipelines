@@ -1,0 +1,43 @@
+[2023-04-14T06:23:38.829+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.inject_data_Odesa scheduled__2023-04-14T05:00:00+00:00 [queued]>
+[2023-04-14T06:23:38.865+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.inject_data_Odesa scheduled__2023-04-14T05:00:00+00:00 [queued]>
+[2023-04-14T06:23:38.869+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-14T06:23:38.873+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-14T06:23:38.876+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-14T06:23:38.948+0000] {taskinstance.py:1309} INFO - Executing <Task(SqliteOperator): inject_data_Odesa> on 2023-04-14 05:00:00+00:00
+[2023-04-14T06:23:38.966+0000] {standard_task_runner.py:55} INFO - Started process 7664 to run task
+[2023-04-14T06:23:39.008+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'inject_data_Odesa', 'scheduled__2023-04-14T05:00:00+00:00', '--job-id', '487', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmp0xh6jipl']
+[2023-04-14T06:23:39.012+0000] {standard_task_runner.py:83} INFO - Job 487: Subtask inject_data_Odesa
+[2023-04-14T06:23:39.238+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.inject_data_Odesa scheduled__2023-04-14T05:00:00+00:00 [running]> on host ffea11fb791c
+[2023-04-14T06:23:39.656+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=inject_data_Odesa
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-14T05:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-14T05:00:00+00:00
+[2023-04-14T06:23:39.661+0000] {sql.py:254} INFO - Executing: 
+                INSERT INTO measures_ext (city, timestamp, temp, humidity, cloudiness, wind_speed) VALUES
+                    ("Odesa",
+                    1681453331,
+                    284.12,
+                    75,
+                    "overcast clouds",
+                    2.13);
+            
+[2023-04-14T06:23:39.702+0000] {base.py:73} INFO - Using connection ID 'measure_db' for task execution.
+[2023-04-14T06:23:40.169+0000] {base.py:73} INFO - Using connection ID 'measure_db' for task execution.
+[2023-04-14T06:23:40.181+0000] {sql.py:375} INFO - Running statement: 
+                INSERT INTO measures_ext (city, timestamp, temp, humidity, cloudiness, wind_speed) VALUES
+                    ("Odesa",
+                    1681453331,
+                    284.12,
+                    75,
+                    "overcast clouds",
+                    2.13);
+            , parameters: None
+[2023-04-14T06:23:40.202+0000] {sql.py:384} INFO - Rows affected: 1
+[2023-04-14T06:23:40.231+0000] {taskinstance.py:1332} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=inject_data_Odesa, execution_date=20230414T050000, start_date=20230414T062338, end_date=20230414T062340
+[2023-04-14T06:23:40.298+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-14T06:23:40.326+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check

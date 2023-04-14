@@ -1,0 +1,32 @@
+[2023-04-13T15:36:46.548+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.choose_endpoint manual__2023-04-13T15:36:44.993551+00:00 [queued]>
+[2023-04-13T15:36:46.556+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.choose_endpoint manual__2023-04-13T15:36:44.993551+00:00 [queued]>
+[2023-04-13T15:36:46.557+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T15:36:46.558+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-13T15:36:46.559+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T15:36:46.568+0000] {taskinstance.py:1309} INFO - Executing <Task(BranchPythonOperator): choose_endpoint> on 2023-04-13 15:36:44.993551+00:00
+[2023-04-13T15:36:46.573+0000] {standard_task_runner.py:55} INFO - Started process 4620 to run task
+[2023-04-13T15:36:46.576+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'choose_endpoint', 'manual__2023-04-13T15:36:44.993551+00:00', '--job-id', '193', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpt19_9fh3']
+[2023-04-13T15:36:46.577+0000] {standard_task_runner.py:83} INFO - Job 193: Subtask choose_endpoint
+[2023-04-13T15:36:46.632+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.choose_endpoint manual__2023-04-13T15:36:44.993551+00:00 [running]> on host ffea11fb791c
+[2023-04-13T15:36:46.681+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=choose_endpoint
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-13T15:36:44.993551+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-13T15:36:44.993551+00:00
+[2023-04-13T15:36:46.684+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/context.py:313: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(k, replacements))
+
+[2023-04-13T15:36:46.686+0000] {logging_mixin.py:137} INFO - 2023-04-13T15:36:44.993551+00:00
+[2023-04-13T15:36:46.687+0000] {logging_mixin.py:137} INFO - 2023-04-13
+[2023-04-13T15:36:46.688+0000] {logging_mixin.py:137} INFO - 2023-04-13
+[2023-04-13T15:36:46.689+0000] {python.py:177} INFO - Done. Returned value was: retrieve_weather_data
+[2023-04-13T15:36:46.690+0000] {python.py:211} INFO - Branch callable return retrieve_weather_data
+[2023-04-13T15:36:46.691+0000] {skipmixin.py:155} INFO - Following branch retrieve_weather_data
+[2023-04-13T15:36:46.692+0000] {skipmixin.py:211} INFO - Skipping tasks ['retrieve_historical_weather_data']
+[2023-04-13T15:36:46.727+0000] {taskinstance.py:1332} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=choose_endpoint, execution_date=20230413T153644, start_date=20230413T153646, end_date=20230413T153646
+[2023-04-13T15:36:46.749+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-13T15:36:46.777+0000] {taskinstance.py:2596} INFO - 1 downstream tasks scheduled from follow-on schedule check

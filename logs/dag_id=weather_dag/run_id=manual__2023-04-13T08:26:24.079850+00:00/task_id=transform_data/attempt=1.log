@@ -1,0 +1,33 @@
+[2023-04-13T08:26:25.536+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.transform_data manual__2023-04-13T08:26:24.079850+00:00 [queued]>
+[2023-04-13T08:26:25.551+0000] {taskinstance.py:1090} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.transform_data manual__2023-04-13T08:26:24.079850+00:00 [queued]>
+[2023-04-13T08:26:25.553+0000] {taskinstance.py:1288} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T08:26:25.554+0000] {taskinstance.py:1289} INFO - Starting attempt 1 of 1
+[2023-04-13T08:26:25.555+0000] {taskinstance.py:1290} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-13T08:26:25.587+0000] {taskinstance.py:1309} INFO - Executing <Task(PythonOperator): transform_data> on 2023-04-13 08:26:24.079850+00:00
+[2023-04-13T08:26:25.593+0000] {standard_task_runner.py:55} INFO - Started process 2160 to run task
+[2023-04-13T08:26:25.601+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'transform_data', 'manual__2023-04-13T08:26:24.079850+00:00', '--job-id', '44', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpjd8v8i_f']
+[2023-04-13T08:26:25.603+0000] {standard_task_runner.py:83} INFO - Job 44: Subtask transform_data
+[2023-04-13T08:26:25.693+0000] {task_command.py:389} INFO - Running <TaskInstance: weather_dag.transform_data manual__2023-04-13T08:26:24.079850+00:00 [running]> on host 0607b07c4f39
+[2023-04-13T08:26:25.825+0000] {taskinstance.py:1518} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=weather_dag
+AIRFLOW_CTX_TASK_ID=transform_data
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-13T08:26:24.079850+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-13T08:26:24.079850+00:00
+[2023-04-13T08:26:25.857+0000] {logging_mixin.py:137} INFO - None
+[2023-04-13T08:26:25.861+0000] {taskinstance.py:1776} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/weather_dag.py", line 19, in transform_data
+    timestamp = info["dt"]
+TypeError: 'NoneType' object is not subscriptable
+[2023-04-13T08:26:25.893+0000] {taskinstance.py:1332} INFO - Marking task as FAILED. dag_id=weather_dag, task_id=transform_data, execution_date=20230413T082624, start_date=20230413T082625, end_date=20230413T082625
+[2023-04-13T08:26:25.924+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 44 for task transform_data ('NoneType' object is not subscriptable; 2160)
+[2023-04-13T08:26:25.972+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-04-13T08:26:26.010+0000] {taskinstance.py:2596} INFO - 0 downstream tasks scheduled from follow-on schedule check
